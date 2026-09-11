@@ -1,336 +1,1501 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>AI Sales Assistant SaaS</title>
-<meta name="description" content="AI-powered conversational sales inbox for modern businesses.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Lagos Vogue AI Sales Assistant — an intelligent fashion boutique sales experience.">
 
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0b0d10;color:#f5f5f5}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-.app{min-height:100vh}
-.header{padding:18px 22px;border-bottom:1px solid #252930;background:#111318;display:flex;justify-content:space-between;align-items:center;gap:15px;position:sticky;top:0;z-index:10}
-.brand{font-size:20px;font-weight:800}
-.brand span{color:#d6ad62}
-.badge{font-size:12px;background:#1b211e;color:#7ee2a8;border:1px solid #31513e;padding:7px 11px;border-radius:20px}
-.hero{padding:42px 22px;background:linear-gradient(135deg,#12151a,#090a0d)}
-.hero h1{font-size:clamp(32px,7vw,62px);line-height:1.02;margin:0 0 15px}
-.hero h1 span{color:#d6ad62}
-.hero p{max-width:700px;color:#aeb4bd;font-size:17px;line-height:1.6}
-.container{max-width:1250px;margin:auto;padding:22px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
-.stat,.panel{background:#111318;border:1px solid #252930;border-radius:16px}
-.stat{padding:18px}
-.stat b{display:block;font-size:25px}
-.stat small{color:#858c97}
-.workspace{display:grid;grid-template-columns:210px 1fr 300px;gap:18px}
-.sidebar{padding:14px}
-.sideitem{padding:13px;border-radius:10px;color:#aeb4bd;margin-bottom:5px}
-.sideitem.active{background:#20242b;color:#fff}
-.panel{overflow:hidden}
-.panelhead{padding:17px;border-bottom:1px solid #252930;display:flex;justify-content:space-between;align-items:center}
-.panelhead b{font-size:15px}
-.chat{padding:18px;min-height:420px}
-.customer{display:flex;gap:10px;margin-bottom:18px}
-.avatar{width:40px;height:40px;border-radius:50%;background:#d6ad62;color:#111;display:grid;place-items:center;font-weight:800}
-.message{background:#1b1f26;padding:12px 14px;border-radius:13px;max-width:80%;line-height:1.5}
-.message.ai{margin-left:auto;background:#244b3c}
-.time{font-size:10px;color:#777;margin-top:5px}
-.quick{display:flex;flex-wrap:wrap;gap:8px;padding:14px;border-top:1px solid #252930}
-.quick button,.action{background:#1b1f26;border:1px solid #30353e;color:#ddd;padding:9px 12px;border-radius:10px}
-.lead{margin:15px;padding:15px;border:1px solid #4d4230;background:#18150f;border-radius:14px}
-.lead h3{margin-top:0;color:#d6ad62}
-.leadrow{display:flex;justify-content:space-between;border-bottom:1px solid #2b271f;padding:7px 0;gap:10px}
-.leadrow span:first-child{color:#888}
-.primary{width:100%;border:0;background:#d6ad62;color:#111;padding:13px;border-radius:10px;font-weight:800;margin-top:12px}
-.intel{padding:18px}
-.intel h3{margin-top:0}
-.tag{display:inline-block;padding:6px 9px;border-radius:15px;background:#203c30;color:#7ee2a8;font-size:12px;margin:3px}
-.cardline{padding:12px 0;border-bottom:1px solid #252930}
-.setup{margin-top:20px;padding:20px}
-.setupgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-label{display:block;color:#999;font-size:12px;margin-bottom:6px}
-input,select,textarea{width:100%;padding:12px;border-radius:9px;border:1px solid #30353e;background:#0d0f13;color:#fff}
-.footer{text-align:center;color:#707782;padding:35px 15px}
+  <title>Lagos Vogue | AI Sales Assistant</title>
 
-@media(max-width:900px){
-.workspace{grid-template-columns:1fr}
-.sidebar{display:none}
-.stats{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:600px){
-.container{padding:13px}
-.hero{padding:32px 18px}
-.stats{gap:9px}
-.stat{padding:13px}
-.stat b{font-size:20px}
-.setupgrid{grid-template-columns:1fr}
-}
-</style>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #111111;
+      --dark: #1b1b1b;
+      --gold: #c9a227;
+      --gold-light: #e6c85c;
+      --cream: #faf8f2;
+      --white: #ffffff;
+      --muted: #777777;
+      --border: #e8e3d8;
+      --success: #16834b;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f3f1ec;
+      color: var(--black);
+      min-height: 100vh;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ================= HEADER ================= */
+
+    .topbar {
+      background: var(--black);
+      color: white;
+      padding: 18px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      box-shadow: 0 3px 15px rgba(0,0,0,.15);
+    }
+
+    .topbar-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .brand-name {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    .brand-sub {
+      font-size: 10px;
+      color: #bdbdbd;
+      letter-spacing: 2px;
+      margin-top: 3px;
+      text-transform: uppercase;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: #d8d8d8;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2bd477;
+      box-shadow: 0 0 8px rgba(43,212,119,.7);
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      background:
+        linear-gradient(135deg, rgba(17,17,17,.98), rgba(45,39,23,.95));
+      color: white;
+      padding: 45px 20px 50px;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: var(--gold-light);
+    }
+
+    .hero p {
+      color: #d8d8d8;
+      line-height: 1.7;
+      max-width: 620px;
+      font-size: 15px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .badge {
+      border: 1px solid rgba(230,200,92,.4);
+      color: #eee;
+      padding: 9px 13px;
+      border-radius: 30px;
+      font-size: 12px;
+      background: rgba(255,255,255,.04);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 20px;
+      padding: 25px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card-title {
+      color: var(--gold-light);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    .hero-stat {
+      font-family: Georgia, serif;
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    .hero-small {
+      color: #bbb;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* ================= MAIN ================= */
+
+    .main {
+      width: 100%;
+      max-width: 1100px;
+      margin: -25px auto 0;
+      padding: 0 15px 50px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 20px;
+    }
+
+    .panel {
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: 0 10px 35px rgba(0,0,0,.08);
+      overflow: hidden;
+    }
+
+    .panel-header {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-title {
+      font-family: Georgia, serif;
+      font-size: 21px;
+      margin-bottom: 6px;
+    }
+
+    .panel-description {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* ================= PRODUCTS ================= */
+
+    .products {
+      padding: 15px;
+    }
+
+    .product {
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      transition: .2s ease;
+      background: #fff;
+    }
+
+    .product:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,.08);
+    }
+
+    .product:last-child {
+      margin-bottom: 0;
+    }
+
+    .product-visual {
+      height: 145px;
+      background:
+        linear-gradient(135deg, #171717, #50472c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      font-family: Georgia, serif;
+      font-size: 34px;
+      letter-spacing: 2px;
+    }
+
+    .product:nth-child(2) .product-visual {
+      background: linear-gradient(135deg, #ececec, #b8b8b8);
+      color: #333;
+    }
+
+    .product-content {
+      padding: 17px;
+    }
+
+    .product-name {
+      font-family: Georgia, serif;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      color: #9b7810;
+      font-weight: bold;
+      font-size: 17px;
+      margin-bottom: 12px;
+    }
+
+    .product-info {
+      color: #707070;
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .product-info strong {
+      color: #333;
+    }
+
+    .product-button {
+      width: 100%;
+      border: none;
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 9px;
+      background: var(--black);
+      color: white;
+      font-weight: bold;
+      transition: .2s;
+    }
+
+    .product-button:hover {
+      background: #2d2d2d;
+    }
+
+    /* ================= CHAT ================= */
+
+    .chat {
+      display: flex;
+      flex-direction: column;
+      min-height: 650px;
+    }
+
+    .chat-header {
+      padding: 17px 20px;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .assistant-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      border: 2px solid var(--gold);
+    }
+
+    .assistant-name {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .assistant-status {
+      font-size: 11px;
+      color: var(--success);
+      margin-top: 3px;
+    }
+
+    .messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      max-height: 520px;
+      background: #fff;
+    }
+
+    .message-row {
+      display: flex;
+      margin-bottom: 15px;
+    }
+
+    .message-row.user {
+      justify-content: flex-end;
+    }
+
+    .message {
+      max-width: 85%;
+      padding: 12px 14px;
+      border-radius: 15px;
+      font-size: 13px;
+      line-height: 1.55;
+      white-space: pre-line;
+    }
+
+    .message.bot {
+      background: #f1efe9;
+      color: #222;
+      border-bottom-left-radius: 4px;
+    }
+
+    .message.user {
+      background: var(--black);
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+
+    .message strong {
+      color: #9b7810;
+    }
+
+    .quick-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0 20px 12px;
+      background: white;
+    }
+
+    .quick {
+      border: 1px solid #d9d4c9;
+      background: white;
+      border-radius: 20px;
+      padding: 8px 12px;
+      font-size: 11px;
+      color: #333;
+    }
+
+    .quick:hover {
+      border-color: var(--gold);
+      color: #80650c;
+    }
+
+    .composer {
+      border-top: 1px solid var(--border);
+      padding: 12px;
+      display: flex;
+      gap: 9px;
+      background: white;
+    }
+
+    .composer input {
+      flex: 1;
+      border: 1px solid #ddd8cf;
+      border-radius: 25px;
+      padding: 12px 15px;
+      outline: none;
+      min-width: 0;
+    }
+
+    .composer input:focus {
+      border-color: var(--gold);
+    }
+
+    .send {
+      width: 45px;
+      height: 45px;
+      border: none;
+      border-radius: 50%;
+      background: var(--black);
+      color: white;
+      font-size: 17px;
+    }
+
+    /* ================= LEAD CARD ================= */
+
+    .lead-card {
+      display: none;
+      margin: 15px 20px 5px;
+      padding: 17px;
+      border: 1px solid #d9c77e;
+      border-radius: 15px;
+      background: #fffdf4;
+    }
+
+    .lead-card.show {
+      display: block;
+    }
+
+    .lead-title {
+      font-family: Georgia, serif;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .lead-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+      font-size: 11px;
+      color: #555;
+    }
+
+    .lead-grid div {
+      padding: 8px;
+      background: white;
+      border-radius: 7px;
+    }
+
+    .lead-grid strong {
+      display: block;
+      color: #222;
+      margin-bottom: 3px;
+    }
+
+    .lead-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .lead-action {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: var(--black);
+      color: white;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .lead-action.secondary {
+      background: #eee9df;
+      color: #222;
+    }
+
+    /* ================= TRUST ================= */
+
+    .trust {
+      max-width: 1100px;
+      margin: 25px auto 0;
+      padding: 0 15px 50px;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .trust-item {
+      background: white;
+      padding: 18px;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,.04);
+    }
+
+    .trust-icon {
+      font-size: 23px;
+      margin-bottom: 8px;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .trust-item span {
+      color: #777;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: var(--black);
+      color: #aaa;
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    footer strong {
+      color: var(--gold-light);
+    }
+
+    /* ================= TYPING ================= */
+
+    .typing {
+      display: none;
+      align-items: center;
+      gap: 4px;
+      background: #f1efe9;
+      width: fit-content;
+      padding: 11px 14px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .typing.show {
+      display: flex;
+    }
+
+    .typing span {
+      width: 5px;
+      height: 5px;
+      background: #777;
+      border-radius: 50%;
+      animation: bounce 1s infinite;
+    }
+
+    .typing span:nth-child(2) {
+      animation-delay: .15s;
+    }
+
+    .typing span:nth-child(3) {
+      animation-delay: .3s;
+    }
+
+    @keyframes bounce {
+      0%, 60%, 100% {
+        transform: translateY(0);
+      }
+      30% {
+        transform: translateY(-5px);
+      }
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 800px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        display: none;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .chat {
+        min-height: 620px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .topbar {
+        padding: 14px;
+      }
+
+      .brand-name {
+        font-size: 16px;
+      }
+
+      .status {
+        font-size: 10px;
+      }
+
+      .hero {
+        padding: 35px 18px 45px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .main {
+        padding: 0 10px 35px;
+      }
+
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lead-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .messages {
+        padding: 15px;
+      }
+
+      .quick-actions {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+
 <div class="app">
 
-<header class="header">
-  <div class="brand">AI <span>Sales Assistant</span></div>
-  <div class="badge">● Live MVP</div>
-</header>
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="topbar-inner">
 
-<section class="hero">
-  <div class="container">
-    <h1>Your AI salesperson.<br><span>Inbox + CRM in one.</span></h1>
-    <p>
-      Turn customer conversations into qualified sales leads automatically.
-      Designed for WhatsApp-style selling, Nigerian businesses and modern commerce.
-    </p>
-  </div>
-</section>
+      <div class="brand">
+        <div class="brand-mark">LV</div>
+        <div>
+          <div class="brand-name">LAGOS VOGUE</div>
+          <div class="brand-sub">Fashion • Lagos</div>
+        </div>
+      </div>
 
-<main class="container">
+      <div class="status">
+        <span class="status-dot"></span>
+        AI Assistant Online
+      </div>
 
-<section class="stats">
-  <div class="stat"><b>24</b><small>Active conversations</small></div>
-  <div class="stat"><b>8</b><small>Qualified leads</small></div>
-  <div class="stat"><b>₦420k</b><small>Pipeline value</small></div>
-  <div class="stat"><b>92%</b><small>Response rate</small></div>
-</section>
-
-<section class="workspace">
-
-<aside class="panel sidebar">
-  <div class="sideitem active">💬 Sales Inbox</div>
-  <div class="sideitem">🔥 Hot Leads</div>
-  <div class="sideitem">⭐ Starred</div>
-  <div class="sideitem">📦 Products</div>
-  <div class="sideitem">⚙️ Business Setup</div>
-</aside>
-
-<section class="panel">
-
-<div class="panelhead">
-  <b>Sales Conversation</b>
-  <span class="badge">HOT LEAD</span>
-</div>
-
-<div class="chat">
-
-<div class="customer">
-  <div class="avatar">D</div>
-  <div>
-    <div class="message">
-      Hello, I need a native outfit for a wedding tomorrow.
-      My budget is around ₦50,000.
     </div>
-    <div class="time">12:41 PM ✓✓</div>
-  </div>
-</div>
+  </header>
 
-<div class="customer">
-  <div class="avatar">AI</div>
-  <div>
-    <div class="message ai">
-      Absolutely 👍 We can help. Our Men's Native Shirt & Trouser Set
-      is ₦50,000. What size and colour would you prefer?
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+
+      <div>
+        <div class="eyebrow">The future of boutique sales</div>
+
+        <h1>
+          Meet your<br>
+          <span>AI Fashion</span><br>
+          Sales Assistant.
+        </h1>
+
+        <p>
+          A smarter way for fashion businesses to engage customers,
+          recommend products, qualify serious buyers and capture sales
+          opportunities — even when the boutique team is busy.
+        </p>
+
+        <div class="hero-badges">
+          <span class="badge">24/7 Enquiries</span>
+          <span class="badge">Lead Qualification</span>
+          <span class="badge">Mobile Friendly</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-card-title">Sales intelligence</div>
+        <div class="hero-stat">More than a chatbot.</div>
+        <div class="hero-small">
+          The assistant asks the right questions, understands the
+          customer's shopping intent and prepares a structured sales
+          lead for the boutique.
+        </div>
+      </div>
+
     </div>
-    <div class="time">12:41 PM • AI Assistant</div>
-  </div>
-</div>
+  </section>
 
-<div class="customer">
-  <div class="avatar">D</div>
-  <div>
-    <div class="message">
-      XL, preferably Navy. I'm in Lagos.
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <div class="layout">
+
+      <!-- PRODUCTS -->
+      <section class="panel">
+
+        <div class="panel-header">
+          <div class="panel-title">Featured Collection</div>
+          <div class="panel-description">
+            Explore selected Lagos Vogue pieces and ask the AI assistant
+            about your preferred style.
+          </div>
+        </div>
+
+        <div class="products">
+
+          <article class="product">
+
+            <div class="product-visual">
+              LV
+            </div>
+
+            <div class="product-content">
+
+              <div class="product-name">
+                Men's Native Shirt & Trouser Set
+              </div>
+
+              <div class="price">
+                ₦50,000
+              </div>
+
+              <div class="product-info">
+                <strong>Sizes:</strong> M, L, XL, XXL<br>
+                <strong>Colours:</strong> Black, White, Navy, Brown
+              </div>
+
+              <button
+                class="product-button"
+                onclick="selectProduct('Men’s Native Shirt & Trouser Set')">
+                Enquire About This
+              </button>
+
+            </div>
+          </article>
+
+
+          <article class="product">
+
+            <div class="product-visual">
+              LV
+            </div>
+
+            <div class="product-content">
+
+              <div class="product-name">
+                Smart Casual Men's Shirt
+              </div>
+
+              <div class="price">
+                ₦25,000
+              </div>
+
+              <div class="product-info">
+                <strong>Sizes:</strong> M, L, XL, XXL<br>
+                <strong>Colours:</strong> White, Black, Sky Blue, Wine
+              </div>
+
+              <button
+                class="product-button"
+                onclick="selectProduct('Smart Casual Men’s Shirt')">
+                Enquire About This
+              </button>
+
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+
+      <!-- CHAT -->
+      <section class="panel chat">
+
+        <div class="chat-header">
+
+          <div class="assistant-avatar">
+            AI
+          </div>
+
+          <div>
+            <div class="assistant-name">
+              Lagos Vogue AI Sales Assistant
+            </div>
+
+            <div class="assistant-status">
+              ● Ready to assist
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="messages" id="messages">
+
+          <div class="message-row">
+            <div class="message bot">
+              Welcome to <strong>Lagos Vogue</strong> 👋
+
+              I'm your AI Sales Assistant.
+
+              I can help you find the right outfit, check your preferred
+              style, understand your budget and prepare your enquiry for
+              our boutique team.
+
+              What are you shopping for today?
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="typing" id="typing">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+
+        <div class="quick-actions" id="quickActions">
+
+          <button class="quick" onclick="quickMessage('I want to shop')">
+            🛍️ I want to shop
+          </button>
+
+          <button class="quick" onclick="quickMessage('I need an outfit for an occasion')">
+            ✨ Occasion outfit
+          </button>
+
+          <button class="quick" onclick="quickMessage('I want to know the prices')">
+            💰 View prices
+          </button>
+
+        </div>
+
+
+        <div id="leadCard" class="lead-card">
+
+          <div class="lead-title">
+            🎯 Qualified Sales Lead
+          </div>
+
+          <div class="lead-grid">
+
+            <div>
+              <strong>Name</strong>
+              <span id="leadName">—</span>
+            </div>
+
+            <div>
+              <strong>Product</strong>
+              <span id="leadProduct">—</span>
+            </div>
+
+            <div>
+              <strong>Budget</strong>
+              <span id="leadBudget">—</span>
+            </div>
+
+            <div>
+              <strong>Size</strong>
+              <span id="leadSize">—</span>
+            </div>
+
+            <div>
+              <strong>Colour</strong>
+              <span id="leadColor">—</span>
+            </div>
+
+            <div>
+              <strong>Location</strong>
+              <span id="leadLocation">—</span>
+            </div>
+
+            <div>
+              <strong>Occasion</strong>
+              <span id="leadOccasion">—</span>
+            </div>
+
+            <div>
+              <strong>Timeline</strong>
+              <span id="leadTimeline">—</span>
+            </div>
+
+          </div>
+
+          <div class="lead-actions">
+
+            <button
+              class="lead-action"
+              onclick="sendLead()">
+              Send Lead
+            </button>
+
+            <button
+              class="lead-action secondary"
+              onclick="copyLead()">
+              Copy Lead
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="composer">
+
+          <input
+            id="userInput"
+            type="text"
+            placeholder="Type your message..."
+            autocomplete="off"
+            onkeydown="handleEnter(event)"
+          >
+
+          <button
+            class="send"
+            onclick="sendMessage()">
+            ➤
+          </button>
+
+        </div>
+
+      </section>
+
     </div>
-    <div class="time">12:42 PM ✓✓</div>
-  </div>
-</div>
+
+  </main>
+
+
+  <!-- TRUST -->
+  <section class="trust">
+
+    <div class="trust-grid">
+
+      <div class="trust-item">
+        <div class="trust-icon">🤖</div>
+        <strong>AI-Powered</strong>
+        <span>
+          Guides customers through a structured shopping conversation.
+        </span>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">🎯</div>
+        <strong>Lead Focused</strong>
+        <span>
+          Captures the information a boutique needs to follow up.
+        </span>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">📱</div>
+        <strong>Built for Mobile</strong>
+        <span>
+          Designed for customers browsing from their phones.
+        </span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+    <strong>Lagos Vogue AI Sales Assistant</strong><br>
+    Demo environment. Product prices and availability should be
+    confirmed by the Lagos Vogue boutique team.
+  </footer>
 
 </div>
 
-<div class="quick">
-  <button onclick="reply('Yes, the Navy XL is available.')">Reply</button>
-  <button onclick="reply('Would you like us to prepare your order?')">Follow up</button>
-  <button onclick="showLeadCard()">View Lead</button>
-  <button onclick="human()">👤 Human</button>
-</div>
-
-<div id="replyBox" style="display:none;padding:14px;border-top:1px solid #252930">
-  <textarea id="replyText" rows="3" placeholder="Type your reply..."></textarea>
-  <button class="primary" onclick="sendReply()">Send Reply</button>
-</div>
-
-</section>
-
-<aside class="panel intel">
-<h3>Customer Intelligence</h3>
-
-<div class="cardline">
-  <small>Customer</small><br>
-  <b>David</b>
-</div>
-
-<div class="cardline">
-  <small>Lead status</small><br>
-  <span class="tag">HOT</span>
-</div>
-
-<div class="cardline">
-  <small>Budget</small><br>
-  <b>₦50,000</b>
-</div>
-
-<div class="cardline">
-  <small>Product</small><br>
-  Men's Native Shirt & Trouser Set
-</div>
-
-<div class="cardline">
-  <small>Size / Colour</small><br>
-  XL / Navy
-</div>
-
-<div class="cardline">
-  <small>Location</small><br>
-  Lagos
-</div>
-
-<div class="cardline">
-  <small>Timeline</small><br>
-  Tomorrow
-</div>
-
-</aside>
-
-</section>
-
-<section class="panel setup">
-<h3>Business Setup</h3>
-
-<div class="setupgrid">
-
-<div>
-<label>Business Name</label>
-<input id="businessName" value="Lagos Vogue">
-</div>
-
-<div>
-<label>AI Personality</label>
-<select>
-<option>Professional & Friendly</option>
-<option>Luxury & Classy</option>
-<option>Friendly Nigerian Sales</option>
-<option>Direct & Fast</option>
-</select>
-</div>
-
-<div>
-<label>Product</label>
-<input value="Men's Native Shirt & Trouser Set">
-</div>
-
-<div>
-<label>Price</label>
-<input value="₦50,000">
-</div>
-
-</div>
-
-<button class="primary" onclick="saveSetup()">Save Business Settings</button>
-</section>
-
-<div id="leadCard"></div>
-
-</main>
-
-<footer class="footer">
-AI Sales Assistant SaaS • Built for modern businesses
-</footer>
-
-</div>
 
 <script>
 
-const WEB_APP_URL="https://script.google.com/macros/s/AKfycbw2EaANO5CXb-Tw7YuSOEi2_BqRbnJAkqP79-BvRivzTDbuQ0sVHDC9PYGY9EwY58cO2A/exec";
+  /* =========================================
+     PRODUCT CATALOG
+  ========================================= */
 
-let lead={
-name:"David",
-contact:"",
-product:"Men’s Native Shirt & Trouser Set",
-budget:"₦50,000",
-size:"XL",
-color:"Navy",
-location:"Lagos",
-occasion:"Wedding",
-timeline:"Tomorrow"
-};
+  const products = {
+    native: {
+      name: "Men’s Native Shirt & Trouser Set",
+      price: "₦50,000",
+      sizes: ["M", "L", "XL", "XXL"],
+      colors: ["Black", "White", "Navy", "Brown"]
+    },
 
-function reply(text){
-document.getElementById("replyBox").style.display="block";
-document.getElementById("replyText").value=text;
-}
+    shirt: {
+      name: "Smart Casual Men’s Shirt",
+      price: "₦25,000",
+      sizes: ["M", "L", "XL", "XXL"],
+      colors: ["White", "Black", "Sky Blue", "Wine"]
+    }
+  };
 
-function sendReply(){
-alert("Reply prepared successfully. WhatsApp/API connection can be connected next.");
-}
 
-function human(){
-alert("Human takeover activated. A staff member can now continue this conversation.");
-}
+  /* =========================================
+     LEAD DATA
+  ========================================= */
 
-function showLeadCard(){
-document.getElementById("leadCard").innerHTML=`
-<div class="lead">
-<h3>🔥 Qualified Sales Lead</h3>
-<div class="leadrow"><span>Name</span><b>${lead.name}</b></div>
-<div class="leadrow"><span>Product</span><b>${lead.product}</b></div>
-<div class="leadrow"><span>Budget</span><b>${lead.budget}</b></div>
-<div class="leadrow"><span>Size</span><b>${lead.size}</b></div>
-<div class="leadrow"><span>Colour</span><b>${lead.color}</b></div>
-<div class="leadrow"><span>Location</span><b>${lead.location}</b></div>
-<div class="leadrow"><span>Occasion</span><b>${lead.occasion}</b></div>
-<div class="leadrow"><span>Timeline</span><b>${lead.timeline}</b></div>
-<button class="primary" onclick="sendLead()">🔥 Send Lead to Business</button>
-</div>`;
-document.getElementById("leadCard").scrollIntoView({behavior:"smooth"});
-}
+  let lead = {
+    name: "",
+    product: "",
+    budget: "",
+    size: "",
+    color: "",
+    location: "",
+    occasion: "",
+    timeline: "",
+    contact: ""
+  };
 
-function buildLeadText(){
-return`NEW SALES LEAD
-Name: ${lead.name}
-Contact: ${lead.contact}
-Product: ${lead.product}
-Budget: ${lead.budget}
-Size: ${lead.size}
-Colour: ${lead.color}
-Location: ${lead.location}
-Occasion: ${lead.occasion}
-Timeline: ${lead.timeline}`;
-}
+  let stage = "welcome";
 
-async function sendLead(){
-try{
-const r=await fetch(WEB_APP_URL,{
-method:"POST",
-headers:{"Content-Type":"text/plain;charset=utf-8"},
-body:JSON.stringify(lead)
-});
-const j=await r.json();
-alert(j.success?
-"✅ Lead sent to the business pipeline.":
-"⚠️ Lead could not be sent: "+j.error);
-}catch(e){
-alert("❌ Connection error. Please try again.");
-}
-}
 
-function saveSetup(){
-const name=document.getElementById("businessName").value;
-alert("✅ Business settings saved for "+name);
+  /* =========================================
+     CHAT FUNCTIONS
+  ========================================= */
+
+  function addMessage(text, sender = "bot") {
+
+    const messages = document.getElementById("messages");
+
+    const row = document.createElement("div");
+
+    row.className = "message-row " + sender;
+
+    const bubble = document.createElement("div");
+
+    bubble.className = "message " + sender;
+
+    bubble.textContent = text;
+
+    row.appendChild(bubble);
+
+    messages.appendChild(row);
+
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+
+  function botReply(text, delay = 600) {
+
+    const typing = document.getElementById("typing");
+
+    typing.classList.add("show");
+
+    setTimeout(() => {
+
+      typing.classList.remove("show");
+
+      addMessage(text, "bot");
+
+    }, delay);
+  }
+
+
+  function quickMessage(text) {
+
+    document.getElementById("userInput").value = text;
+
+    sendMessage();
+  }
+
+
+  function handleEnter(event) {
+
+    if (event.key === "Enter") {
+      sendMessage();
+    }
+
+  }
+
+
+  function sendMessage() {
+
+    const input = document.getElementById("userInput");
+
+    const text = input.value.trim();
+
+    if (!text) return;
+
+    addMessage(text, "user");
+
+    input.value = "";
+
+    processMessage(text);
+
+  }
+
+
+  /* =========================================
+     PRODUCT BUTTON
+  ========================================= */
+
+  function selectProduct(productName) {
+
+    lead.product = productName;
+
+    addMessage(
+      "I'm interested in the " + productName,
+      "user"
+    );
+
+    botReply(
+      "Excellent choice. I'd be happy to help you with that.\n\n" +
+      "What is your approximate budget for this purchase?"
+    );
+
+    stage = "budget";
+  }
+
+
+  /* =========================================
+     AI-LIKE QUALIFICATION FLOW
+  ========================================= */
+
+  function processMessage(text) {
+
+    const lower = text.toLowerCase();
+
+
+    if (stage === "welcome") {
+
+      botReply(
+        "Great. We have two featured options:\n\n" +
+        "1. Men’s Native Shirt & Trouser Set — ₦50,000\n" +
+        "2. Smart Casual Men’s Shirt — ₦25,000\n\n" +
+        "Which one interests you?"
+      );
+
+      stage = "product";
+
+      return;
+    }
+
+
+    if (stage === "product") {
+
+      if (
+        lower.includes("native") ||
+        lower.includes("trouser") ||
+        lower.includes("50")
+      ) {
+        lead.product = products.native.name;
+
+      } else if (
+        lower.includes("shirt") ||
+        lower.includes("casual") ||
+        lower.includes("25")
+      ) {
+        lead.product = products.shirt.name;
+
+      } else {
+
+        lead.product = text;
+
+      }
+
+      botReply(
+        "Perfect. What budget range are you working with?"
+      );
+
+      stage = "budget";
+
+      return;
+    }
+
+
+    if (stage === "budget") {
+
+      lead.budget = text;
+
+      botReply(
+        "Thanks. What occasion are you buying the outfit for?\n\n" +
+        "For example: wedding, office, church, birthday, event, casual wear or personal use."
+      );
+
+      stage = "occasion";
+
+      return;
+    }
+
+
+    if (stage === "occasion") {
+
+      lead.occasion = text;
+
+      botReply(
+        "Nice. What size do you normally wear?\n\n" +
+        "Available sizes include M, L, XL and XXL."
+      );
+
+      stage = "size";
+
+      return;
+    }
+
+
+    if (stage === "size") {
+
+      lead.size = text.toUpperCase();
+
+      botReply(
+        "Got it. What colour would you prefer?"
+      );
+
+      stage = "color";
+
+      return;
+    }
+
+
+    if (stage === "color") {
+
+      lead.color = text;
+
+      botReply(
+        "Great choice. Which area are you located in?"
+      );
+
+      stage = "location";
+
+      return;
+    }
+
+
+    if (stage === "location") {
+
+      lead.location = text;
+
+      botReply(
+        "Thanks. When do you need the outfit?\n\n" +
+        "For example: today, this week, next week or a specific date."
+      );
+
+      stage = "timeline";
+
+      return;
+    }
+
+
+    if (stage === "timeline") {
+
+      lead.timeline = text;
+
+      botReply(
+        "Excellent. Finally, what is your name?"
+      );
+
+      stage = "name";
+
+      return;
+    }
+
+
+    if (stage === "name") {
+
+      lead.name = text;
+
+      botReply(
+        "Thank you, " + text + ".\n\n" +
+        "One last thing: what is the best phone number or WhatsApp contact for the boutique team to reach you?"
+      );
+
+      stage = "contact";
+
+      return;
+    }
+
+
+    if (stage === "contact") {
+
+      lead.contact = text;
+
+      showLead();
+
+      botReply(
+        "Perfect. Your enquiry has been captured.\n\n" +
+        "The boutique team can now review your requirements and follow up with you."
+      );
+
+      stage = "complete";
+
+      return;
+    }
+
+
+    if (stage === "complete") {
+
+      botReply(
+        "Your enquiry is already captured. The boutique team can follow up using the contact details you provided.\n\n" +
+        "You can also start another enquiry if you'd like."
+      );
+
+    }
+
+  }
+
+
+  /* =========================================
+     SHOW LEAD
+  ========================================= */
+
+  function showLead() {
+
+    document.getElementById("leadName").textContent =
+      lead.name || "—";
+
+    document.getElementById("leadProduct").textContent =
+      lead.product || "—";
+
+    document.getElementById("leadBudget").textContent =
+      lead.budget || "—";
+
+    document.getElementById("leadSize").textContent =
+      lead.size || "—";
+
+    document.getElementById("leadColor").textContent =
+      lead.color || "—";
+
+    document.getElementById("leadLocation").textContent =
+      lead.location || "—";
+
+    document.getElementById("leadOccasion").textContent =
+      lead.occasion || "—";
+
+    document.getElementById("leadTimeline").textContent =
+      lead.timeline || "—";
+
+    document.getElementById("leadCard").classList.add("show");
+
+    document.getElementById("quickActions").style.display = "none";
+  }
+
+
+  /* =========================================
+     CREATE LEAD TEXT
+  ========================================= */
+
+  function buildLeadText() {
+
+    return (
+      "LAGOS VOGUE QUALIFIED SALES LEAD\n\n" +
+      "Name: " + lead.name + "\n" +
+      "Contact: " + lead.contact + "\n" +
+      "Product: " + lead.product + "\n" +
+      "Budget: " + lead.budget + "\n" +
+      "Size: " + lead.size + "\n" +
+      "Colour: " + lead.color + "\n" +
+      "Location: " + lead.location + "\n" +
+      "Occasion: " + lead.occasion + "\n" +
+      "Timeline: " + lead.timeline
+    );
+
+  }
+
+
+  /* =========================================
+     COPY LEAD
+  ========================================= */
+
+  function copyLead() {
+
+    const leadText = buildLeadText();
+
+    navigator.clipboard.writeText(leadText)
+      .then(() => {
+
+        alert("Lead copied successfully.");
+
+      })
+      .catch(() => {
+
+        alert(leadText);
+
+      });
+
+  }
+
+
+  /* =========================================
+     SEND LEAD — DEMO PLACEHOLDER
+  ========================================= */
+async function sendLead() {
+
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw2EaANO5CXb-Tw7YuSOEi2_BqRbnJAkqP79-BvRivzTDbuQ0sVHDC9PYGY9EwY58cO2A/exec";
+
+  try {
+
+    const response = await fetch(WEB_APP_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify(lead)
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+
+      alert(
+        "✅ Lead sent successfully!\n\n" +
+        "Lagos Vogue can now follow up with this customer."
+      );
+
+    } else {
+
+      alert(
+        "⚠️ Lead could not be sent.\n\n" +
+        result.error
+      );
+
+    }
+
+  } catch (error) {
+
+    alert(
+      "❌ Connection error.\n\n" +
+      "Please try again."
+    );
+
+  }
+
 }
 
 </script>
