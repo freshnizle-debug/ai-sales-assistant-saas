@@ -1968,7 +1968,369 @@ async function sendLead() {
   }
 
 }
+/* =========================================================
+   LAGOS VOGUE — AI SALES INTELLIGENCE ENGINE
+   Operation 2
+   ========================================================= */
 
+let conversationStarred = false;
+let humanMode = false;
+let followupScheduled = false;
+let leadTemperature = "WARM";
+
+/* ---------- CUSTOMER INTELLIGENCE ---------- */
+
+function updateCustomerIntelligence() {
+  const budget = lead.budget || "";
+  const location = lead.location || "";
+  const timeline = lead.timeline || "";
+
+  const budgetEl = document.getElementById("customerBudget");
+  const locationEl = document.getElementById("customerLocation");
+  const timelineEl = document.getElementById("customerTimeline");
+  const intentEl = document.getElementById("customerIntent");
+  const statusEl = document.getElementById("customerStatus");
+  const actionEl = document.getElementById("nextBestAction");
+
+  if (budgetEl) budgetEl.textContent = budget || "Not known";
+  if (locationEl) locationEl.textContent = location || "Not known";
+  if (timelineEl) timelineEl.textContent = timeline || "Not known";
+
+  let intent = "Exploring";
+  let status = "New Prospect";
+  let nextAction = "Start the conversation and discover what the customer needs.";
+
+  if (lead.product) {
+    intent = "Product Interest";
+    status = "Engaged Prospect";
+    nextAction = "Understand the customer's budget and preferred option.";
+  }
+
+  if (budget) {
+    intent = "Buying Intent";
+    status = "Qualified Prospect";
+    nextAction = "Recommend the best product that fits the customer's budget.";
+  }
+
+  if (timeline) {
+    intent = "Ready to Buy";
+    status = "Sales Opportunity";
+    nextAction = "Confirm product availability and move toward closing.";
+  }
+
+  if (intentEl) intentEl.textContent = intent;
+  if (statusEl) statusEl.textContent = status;
+  if (actionEl) actionEl.textContent = nextAction;
+
+  updateMetrics();
+}
+
+
+/* ---------- LEAD TEMPERATURE ---------- */
+
+function setLeadTemperature(level) {
+  leadTemperature = level;
+
+  const badge = document.getElementById("leadTemperature");
+  if (!badge) return;
+
+  badge.textContent = level.toUpperCase();
+
+  badge.classList.remove("hot", "warm", "nurture", "cold");
+  badge.classList.add(level.toLowerCase());
+
+  updateMetrics();
+}
+
+function markLeadHot() {
+  setLeadTemperature("HOT");
+
+  const status = document.getElementById("customerStatus");
+  const action = document.getElementById("nextBestAction");
+
+  if (status) status.textContent = "🔥 Hot Lead";
+  if (action) {
+    action.textContent =
+      "Prioritize this customer. Confirm availability, remove objections and close the sale.";
+  }
+
+  addMessage(
+    "🔥 Lead marked HOT. I’ll prioritize this customer for closing.",
+    "bot"
+  );
+}
+
+
+/* ---------- METRICS ---------- */
+
+function updateMetrics() {
+  const hot = document.getElementById("metricHot");
+  const qualified = document.getElementById("metricQualified");
+  const followups = document.getElementById("metricFollowups");
+
+  if (hot) {
+    hot.textContent = leadTemperature === "HOT" ? "1" : "0";
+  }
+
+  if (qualified) {
+    qualified.textContent =
+      lead.product || lead.budget || lead.location ? "1" : "0";
+  }
+
+  if (followups) {
+    followups.textContent = followupScheduled ? "1" : "0";
+  }
+}
+
+
+/* ---------- SEARCH ---------- */
+
+function searchConversation() {
+  const input = document.getElementById("conversationSearch");
+  if (!input) return;
+
+  const query = input.value.trim().toLowerCase();
+  const messages = document.querySelectorAll("#messages .message");
+
+  messages.forEach(message => {
+    const text = message.textContent.toLowerCase();
+
+    if (!query) {
+      message.style.display = "";
+      return;
+    }
+
+    message.style.display =
+      text.includes(query) ? "" : "none";
+  });
+}
+
+
+/* ---------- STAR ---------- */
+
+function toggleStarConversation() {
+  conversationStarred = !conversationStarred;
+
+  const buttons = document.querySelectorAll(
+    ".conversation-actions button"
+  );
+
+  if (buttons[0]) {
+    buttons[0].classList.toggle("active", conversationStarred);
+    buttons[0].style.opacity = conversationStarred ? "1" : "0.7";
+  }
+
+  alert(
+    conversationStarred
+      ? "⭐ Conversation starred."
+      : "Conversation unstarred."
+  );
+}
+
+
+/* ---------- COPY CONVERSATION ---------- */
+
+function copyConversation() {
+  const messages = document.querySelectorAll(
+    "#messages .message"
+  );
+
+  let text = "";
+
+  messages.forEach(message => {
+    text += message.innerText + "\n";
+  });
+
+  if (!text.trim()) {
+    alert("There is no conversation to copy yet.");
+    return;
+  }
+
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      alert("✅ Conversation copied.");
+    })
+    .catch(() => {
+      alert("⚠️ Unable to copy automatically.");
+    });
+}
+
+
+/* ---------- HUMAN TAKEOVER ---------- */
+
+function toggleHumanMode() {
+  humanMode = !humanMode;
+
+  const composer = document.querySelector(".composer");
+  const buttons = document.querySelectorAll(
+    ".command-actions .cc-btn"
+  );
+
+  if (humanMode) {
+
+    if (composer) {
+      composer.classList.add("human-mode");
+    }
+
+    if (buttons[1]) {
+      buttons[1].textContent = "AI Mode";
+    }
+
+    addMessage(
+      "👤 Human takeover is now ON. You are in control of this conversation.",
+      "bot"
+    );
+
+  } else {
+
+    if (composer) {
+      composer.classList.remove("human-mode");
+    }
+
+    if (buttons[1]) {
+      buttons[1].textContent = "Human Takeover";
+    }
+
+    addMessage(
+      "🤖 AI Sales Assistant is back in control.",
+      "bot"
+    );
+  }
+}
+
+
+/* ---------- NEW CONVERSATION ---------- */
+
+function startNewConversation() {
+
+  lead = {
+    name: "",
+    product: "",
+    budget: "",
+    size: "",
+    color: "",
+    location: "",
+    occasion: "",
+    timeline: "",
+    contact: ""
+  };
+
+  stage = "welcome";
+  conversationStarred = false;
+  followupScheduled = false;
+
+  setLeadTemperature("WARM");
+
+  const messages = document.getElementById("messages");
+
+  if (messages) {
+    messages.innerHTML = "";
+  }
+
+  addMessage(
+    "Hello 👋 I’m your Lagos Vogue AI Sales Assistant. What are you shopping for today?",
+    "bot"
+  );
+
+  updateCustomerIntelligence();
+}
+
+
+/* ---------- SUGGESTED REPLIES ---------- */
+
+function useSuggestedReply(button) {
+
+  if (!button) return;
+
+  const text = button.textContent
+    .replace(/[“”"]/g, "")
+    .trim();
+
+  const input =
+    document.querySelector("#messageInput") ||
+    document.querySelector("textarea") ||
+    document.querySelector('input[type="text"]');
+
+  if (input) {
+    input.value = text;
+    input.focus();
+  }
+}
+
+
+/* ---------- PRODUCT RECOMMENDATION ---------- */
+
+function recommendProduct() {
+
+  let recommendation =
+    "Based on what you’ve shared, I can recommend the best option for you.";
+
+  if (lead.budget) {
+    recommendation +=
+      " Let’s match your budget with the strongest available option.";
+  }
+
+  addMessage(recommendation, "bot");
+
+  setLeadTemperature(
+    lead.budget || lead.product ? "HOT" : "WARM"
+  );
+
+  updateCustomerIntelligence();
+}
+
+
+/* ---------- BUDGET MATCHING ---------- */
+
+function matchBudget() {
+
+  if (!lead.budget) {
+    addMessage(
+      "What budget range are you working with? I’ll match you with the best option.",
+      "bot"
+    );
+    return;
+  }
+
+  addMessage(
+    "💰 Great. I’ll match your budget against our available options and recommend the closest fit.",
+    "bot"
+  );
+
+  updateCustomerIntelligence();
+}
+
+
+/* ---------- FOLLOW-UP ---------- */
+
+function scheduleFollowup() {
+
+  followupScheduled = true;
+
+  const action = document.getElementById("nextBestAction");
+
+  if (action) {
+    action.textContent =
+      "Follow-up scheduled. Re-engage this customer and continue toward conversion.";
+  }
+
+  updateMetrics();
+
+  addMessage(
+    "⏰ Follow-up marked. This customer needs another touch.",
+    "bot"
+  );
+}
+
+
+/* ---------- INITIALIZE INTELLIGENCE ---------- */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  updateCustomerIntelligence();
+  updateMetrics();
+
+});
 </script>
 
 </body>
