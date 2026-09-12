@@ -691,6 +691,383 @@
         padding-right: 15px;
       }
     }
+    /* =========================================================
+   LAGOS VOGUE — SALES COMMAND CENTER
+   OPERATION 2 PREMIUM UI
+   ========================================================= */
+
+/* COMMAND CENTER */
+.command-center {
+  margin: 22px auto 0;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.command-top {
+  background: var(--black);
+  color: var(--white);
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.12);
+}
+
+.eyebrow,
+.ci-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.command-top h2 {
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.command-top p {
+  color: #cfcfcf;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.command-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cc-btn {
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.08);
+  color: var(--white);
+  padding: 11px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.cc-btn:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.cc-btn.dark {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+}
+
+/* SALES METRICS */
+.sales-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.metric-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 5px 18px rgba(0,0,0,.04);
+}
+
+.metric-label {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.metric-card strong {
+  display: block;
+  font-size: 25px;
+  margin-bottom: 3px;
+}
+
+.metric-card small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+/* CONVERSATION TOOLS */
+.conversation-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.conversation-search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0 11px;
+}
+
+.conversation-search span {
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.conversation-search input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 10px 0;
+  font-size: 12px;
+  color: var(--black);
+}
+
+.conversation-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.conversation-actions button {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.conversation-actions button:hover {
+  background: var(--gold);
+}
+
+/* CUSTOMER INTELLIGENCE */
+.customer-intelligence {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 15px;
+  margin-bottom: 12px;
+}
+
+.ci-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.ci-header strong {
+  font-size: 14px;
+}
+
+.lead-temperature {
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  padding: 5px 8px;
+  border-radius: 20px;
+  background: #fff3d6;
+  color: #946b00;
+}
+
+.lead-temperature.hot {
+  background: #ffe1dc;
+  color: #a32618;
+}
+
+.lead-temperature.cold {
+  background: #e9edf2;
+  color: #53606d;
+}
+
+.lead-temperature.nurture {
+  background: #eee7ff;
+  color: #6844a8;
+}
+
+.ci-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.ci-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 9px;
+}
+
+.ci-item span {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+  margin-bottom: 4px;
+}
+
+.ci-item strong {
+  display: block;
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.next-action {
+  margin-top: 10px;
+  background: var(--black);
+  color: var(--white);
+  border-radius: 10px;
+  padding: 11px 12px;
+}
+
+.next-action span {
+  display: block;
+  color: var(--gold);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.next-action p {
+  color: #ddd;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+/* AI SALES COPILOT */
+.ai-sales-actions {
+  margin: 12px 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  background: var(--white);
+}
+
+.sales-actions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 11px;
+}
+
+.sales-actions-header strong {
+  display: block;
+  font-size: 13px;
+}
+
+.copilot-status {
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--success);
+}
+
+.suggested-replies {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.suggested-reply {
+  flex: 0 0 auto;
+  border: 1px solid var(--border);
+  background: var(--cream);
+  border-radius: 20px;
+  padding: 8px 11px;
+  font-size: 10px;
+  color: var(--black);
+  cursor: pointer;
+}
+
+.suggested-reply:hover {
+  border-color: var(--gold);
+  background: #fffdf5;
+}
+
+.sales-action-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+
+.sales-action-grid button {
+  border: 1px solid var(--border);
+  background: var(--cream);
+  border-radius: 9px;
+  padding: 9px 5px;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.sales-action-grid button:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+.sales-action-grid span {
+  margin-right: 3px;
+}
+
+/* HUMAN TAKEOVER STATE */
+.human-mode {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 2px rgba(201,162,39,.12);
+}
+
+/* MOBILE */
+@media (max-width: 760px) {
+
+  .command-center {
+    padding: 0 12px;
+  }
+
+  .command-top {
+    padding: 18px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .command-top h2 {
+    font-size: 21px;
+  }
+
+  .sales-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ci-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sales-action-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .conversation-tools {
+    align-items: stretch;
+  }
+
+  .conversation-actions button {
+    width: 34px;
+    height: 34px;
+  }
+  }
   </style>
 </head>
 
