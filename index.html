@@ -2314,10 +2314,7 @@ function useSuggestedReply(button) {
     .replace(/[“”"]/g, "")
     .trim();
 
-  const input =
-    document.querySelector("#messageInput") ||
-    document.querySelector("textarea") ||
-    document.querySelector('input[type="text"]');
+  const input = document.getElementById("userInput");
 
   if (input) {
     input.value = text;
