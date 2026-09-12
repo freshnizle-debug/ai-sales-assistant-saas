@@ -926,7 +926,82 @@
           </div>
 
         </div>
+        
+        <!-- CONVERSATION INTELLIGENCE -->
+        <div class="conversation-tools">
 
+          <div class="conversation-search">
+            <span>⌕</span>
+            <input
+              type="text"
+              id="conversationSearch"
+              placeholder="Search this conversation..."
+              oninput="searchConversation()"
+            />
+          </div>
+
+          <div class="conversation-actions">
+            <button type="button" onclick="toggleStarConversation()" title="Star conversation">
+              ★
+            </button>
+
+            <button type="button" onclick="copyConversation()" title="Copy conversation">
+              ⧉
+            </button>
+
+            <button type="button" onclick="toggleHumanMode()" title="Human takeover">
+              👤
+            </button>
+          </div>
+
+        </div>
+
+        <!-- CUSTOMER INTELLIGENCE -->
+        <div class="customer-intelligence">
+
+          <div class="ci-header">
+            <div>
+              <span class="ci-label">CUSTOMER INTELLIGENCE</span>
+              <strong id="customerStatus">New Prospect</strong>
+            </div>
+
+            <span class="lead-temperature warm" id="leadTemperature">
+              WARM
+            </span>
+          </div>
+
+          <div class="ci-grid">
+
+            <div class="ci-item">
+              <span>Intent</span>
+              <strong id="customerIntent">Exploring</strong>
+            </div>
+
+            <div class="ci-item">
+              <span>Budget</span>
+              <strong id="customerBudget">Not known</strong>
+            </div>
+
+            <div class="ci-item">
+              <span>Location</span>
+              <strong id="customerLocation">Not known</strong>
+            </div>
+
+            <div class="ci-item">
+              <span>Timeline</span>
+              <strong id="customerTimeline">Not known</strong>
+            </div>
+
+          </div>
+
+          <div class="next-action">
+            <span>⚡ NEXT BEST ACTION</span>
+            <p id="nextBestAction">
+              Start the conversation and discover what the customer needs.
+            </p>
+          </div>
+
+        </div>
 
         <div class="typing" id="typing">
           <span></span>
