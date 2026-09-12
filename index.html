@@ -1094,53 +1094,27 @@
           </div>
 
         </div>
+                <!-- AI SALES ACTIONS -->
+        <div class="ai-sales-actions">
 
+          <div class="sales-actions-header">
+            <div>
+              <span class="ci-label">AI SALES COPILOT</span>
+              <strong>Suggested next moves</strong>
+            </div>
 
-        <div class="composer">
+            <span class="copilot-status">● LIVE</span>
+          </div>
 
-          <input
-            id="userInput"
-            type="text"
-            placeholder="Type your message..."
-            autocomplete="off"
-            onkeydown="handleEnter(event)"
-          >
+          <div class="suggested-replies" id="suggestedReplies">
 
-          <button
-            class="send"
-            onclick="sendMessage()">
-            ➤
-          </button>
+            <button type="button" class="suggested-reply"
+              onclick="useSuggestedReply(this)">
+              “Yes, I can help you find something within your budget.”
+            </button>
 
-        </div>
+            <button type="button" class="suggested-reply"
 
-      </section>
-
-    </div>
-
-  </main>
-
-
-  <!-- TRUST -->
-  <section class="trust">
-
-    <div class="trust-grid">
-
-      <div class="trust-item">
-        <div class="trust-icon">🤖</div>
-        <strong>AI-Powered</strong>
-        <span>
-          Guides customers through a structured shopping conversation.
-        </span>
-      </div>
-
-      <div class="trust-item">
-        <div class="trust-icon">🎯</div>
-        <strong>Lead Focused</strong>
-        <span>
-          Captures the information a boutique needs to follow up.
-        </span>
-      </div>
 
       <div class="trust-item">
         <div class="trust-icon">📱</div>
