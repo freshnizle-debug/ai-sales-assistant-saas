@@ -1490,7 +1490,75 @@
               “Yes, I can help you find something within your budget.”
             </button>
 
+                        <button type="button" class="suggested-reply"
+              onclick="useSuggestedReply(this)">
+              “What occasion are you shopping for?”
+            </button>
+
             <button type="button" class="suggested-reply"
+              onclick="useSuggestedReply(this)">
+              “I can recommend the best option based on your needs.”
+            </button>
+
+          </div>
+
+          <div class="sales-action-grid">
+
+            <button type="button" onclick="recommendProduct()">
+              <span>✦</span> Recommend
+            </button>
+
+            <button type="button" onclick="matchBudget()">
+              <span>₦</span> Match Budget
+            </button>
+
+            <button type="button" onclick="scheduleFollowup()">
+              <span>◷</span> Follow-up
+            </button>
+
+            <button type="button" onclick="markLeadHot()">
+              <span>🔥</span> Mark Hot
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- MESSAGE COMPOSER -->
+
+        <div class="composer">
+
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Type your message..."
+            onkeydown="handleEnter(event)"
+            autocomplete="off"
+          />
+
+          <button
+            class="send"
+            type="button"
+            onclick="sendMessage()">
+            ➤
+          </button>
+
+        </div>
+
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <!-- TRUST SECTION -->
+
+  <section class="trust">
+
+    <div class="trust-grid">
 
 
       <div class="trust-item">
