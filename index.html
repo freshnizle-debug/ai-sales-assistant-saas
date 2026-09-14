@@ -2722,23 +2722,45 @@ function matchBudget() {
   if (!lead.budget) {
 
     addMessage(
-      "What budget range are you working with? I’ll match you with the best option.",
+      "💰 Tell me your budget and I’ll match you with the closest available option.",
       "bot"
     );
 
     return;
   }
 
+  const budgetText =
+    lead.budget.replace(/[₦,]/g, "");
+
+  const budget =
+    parseInt(budgetText) || 0;
+
+  let result = "";
+
+  if (budget >= 50000) {
+
+    result =
+      "💰 Your budget can comfortably cover the Men’s Native Shirt & Trouser Set at ₦50,000.";
+
+  } else if (budget >= 25000) {
+
+    result =
+      "💰 Your budget matches the Smart Casual Men’s Shirt at ₦25,000.";
+
+  } else {
+
+    result =
+      "💰 Your stated budget is below our featured options. I can help you review the closest available option or adjust the requirements.";
+
+  }
 
   addMessage(
-    "💰 Great. I’ll match your budget against our available options and recommend the closest fit.",
+    result,
     "bot"
   );
 
-
   updateCustomerIntelligence();
 }
-
 
 /* ---------- FOLLOW-UP ---------- */
 
