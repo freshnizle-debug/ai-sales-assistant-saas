@@ -2587,7 +2587,6 @@ function toggleHumanMode() {
 
 
 /* ---------- NEW CONVERSATION ---------- */
-
 function startNewConversation() {
 
   lead = {
@@ -2602,31 +2601,58 @@ function startNewConversation() {
     contact: ""
   };
 
-
   stage = "welcome";
-
   conversationStarred = false;
-
   followupScheduled = false;
-
   manualHotOverride = false;
 
-  setLeadTemperature("NURTURE");
-
-
-  const messages =
-    document.getElementById("messages");
+  const messages = document.getElementById("messages");
+  const leadCard = document.getElementById("leadCard");
+  const quickActions = document.getElementById("quickActions");
+  const search = document.getElementById("conversationSearch");
+  const composer = document.querySelector(".composer");
 
   if (messages) {
     messages.innerHTML = "";
   }
 
+  if (leadCard) {
+    leadCard.classList.remove("show");
+  }
+
+  if (quickActions) {
+    quickActions.style.display = "";
+  }
+
+  if (search) {
+    search.value = "";
+  }
+
+  humanMode = false;
+
+  if (composer) {
+    composer.classList.remove("human-mode");
+  }
+
+  const takeoverButton =
+    document.querySelector(".command-actions .cc-btn.dark");
+
+  if (takeoverButton) {
+    takeoverButton.textContent = "Human Takeover";
+  }
+
+  const starButton =
+    document.querySelector(".conversation-actions button");
+
+  if (starButton) {
+    starButton.classList.remove("active");
+    starButton.style.opacity = "";
+  }
 
   addMessage(
     "Hello 👋 I’m your Lagos Vogue AI Sales Assistant. What are you shopping for today?",
     "bot"
   );
-
 
   updateCustomerIntelligence();
 }
