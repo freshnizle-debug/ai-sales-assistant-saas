@@ -2419,33 +2419,28 @@ function searchConversation() {
   const query =
     input.value.trim().toLowerCase();
 
-  const messages =
+  const rows =
     document.querySelectorAll(
-      "#messages .message"
+      "#messages .message-row"
     );
 
-
-  messages.forEach(message => {
+  rows.forEach(row => {
 
     const text =
-      message.textContent.toLowerCase();
+      row.textContent.toLowerCase();
 
     if (!query) {
-
-      message.style.display = "";
-
+      row.style.display = "";
       return;
     }
 
-    message.style.display =
+    row.style.display =
       text.includes(query)
         ? ""
         : "none";
 
   });
 }
-
-
 /* ---------- STAR CONVERSATION ---------- */
 
 function toggleStarConversation() {
