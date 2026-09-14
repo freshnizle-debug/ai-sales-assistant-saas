@@ -1714,12 +1714,11 @@
 
   function selectProduct(productName) {
 
-    lead.product = productName;
+  lead.product = productName;
 
-    addMessage(
-      "I'm interested in the " + productName,
-      "user"
-    );
+  updateCustomerIntelligence();
+
+  addMessage( 
 
     botReply(
       "Excellent choice. I'd be happy to help you with that.\n\n" +
