@@ -1686,20 +1686,23 @@
 
   function sendMessage() {
 
-    const input = document.getElementById("userInput");
+  const input = document.getElementById("userInput");
 
-    const text = input.value.trim();
+  const text = input.value.trim();
 
-    if (!text) return;
+  if (!text) return;
 
-    addMessage(text, "user");
+  addMessage(text, "user");
 
-    input.value = "";
+  input.value = "";
 
-    processMessage(text);
-
+  if (humanMode) {
+    return;
   }
 
+  processMessage(text);
+
+}
 
   /* =========================================
      PRODUCT BUTTON
