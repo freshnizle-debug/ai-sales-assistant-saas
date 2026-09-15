@@ -2013,7 +2013,19 @@ async function sendLead() {
       body: JSON.stringify(lead)
     });
 
-    const result = await response.json();
+    const responseText = await response.text();
+
+let result;
+
+try {
+  result = JSON.parse(responseText);
+} catch (error) {
+  alert(
+    "⚠️ Google connection reached, but it did not return valid JSON.\n\n" +
+    responseText.substring(0, 300)
+  );
+  return;
+}
 
     if (result.success) {
 
